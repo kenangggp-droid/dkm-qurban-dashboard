@@ -1,0 +1,96 @@
+{
+  "source": "DKM_Qurban_Sederhana_Visual.xlsx",
+  "title": "Dashboard Tabungan Qurban",
+  "months": [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "Mei",
+    "Jun",
+    "Jul",
+    "Agu",
+    "Sep",
+    "Okt",
+    "Nov",
+    "Des"
+  ],
+  "participants": [
+    {
+      "name": "kenang",
+      "monthly": {
+        "Jan": 1000000,
+        "Feb": 2000000,
+        "Mar": 2000000,
+        "Apr": 2000000,
+        "Mei": 2000000,
+        "Jun": 2000000,
+        "Jul": 2000000,
+        "Agu": 2000000,
+        "Sep": 0,
+        "Okt": 0,
+        "Nov": 0,
+        "Des": 0
+      },
+      "total": 15000000,
+      "status": "AKTIF"
+    },
+    {
+      "name": "anggi",
+      "monthly": {
+        "Jan": 2000000,
+        "Feb": 2000000,
+        "Mar": 2000000,
+        "Apr": 2000000,
+        "Mei": 2000000,
+        "Jun": 2000000,
+        "Jul": 2000000,
+        "Agu": 2000000,
+        "Sep": 0,
+        "Okt": 0,
+        "Nov": 0,
+        "Des": 0
+      },
+      "total": 16000000,
+      "status": "AKTIF"
+    },
+    {
+      "name": "kakek",
+      "monthly": {
+        "Jan": 200000,
+        "Feb": 2000000,
+        "Mar": 2000000,
+        "Apr": 2000000,
+        "Mei": 2000000,
+        "Jun": 2000000,
+        "Jul": 0,
+        "Agu": 0,
+        "Sep": 0,
+        "Okt": 0,
+        "Nov": 0,
+        "Des": 0
+      },
+      "total": 10200000,
+      "status": "AKTIF"
+    }
+  ],
+  "summary": {
+    "totalParticipants": 3,
+    "activeParticipants": 3,
+    "totalFunds": 41200000,
+    "monthlyTotals": {
+      "Jan": 3200000,
+      "Feb": 6000000,
+      "Mar": 6000000,
+      "Apr": 6000000,
+      "Mei": 6000000,
+      "Jun": 6000000,
+      "Jul": 4000000,
+      "Agu": 4000000,
+      "Sep": 0,
+      "Okt": 0,
+      "Nov": 0,
+      "Des": 0
+    }
+  }
+}

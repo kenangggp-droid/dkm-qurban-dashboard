@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Dashboard Tabungan Qurban</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">DKM Qurban</p>
+        <h1>Dashboard Tabungan Qurban</h1>
+        <p class="sync-status" id="syncStatus">Memuat data spreadsheet...</p>
+      </div>
+      <div class="source-pill" id="sourceName">Spreadsheet</div>
+    </header>
+
+    <main>
+      <section class="kpis" aria-label="Ringkasan tabungan qurban">
+        <article class="kpi">
+          <span>Total Dana</span>
+          <strong id="totalFunds">Rp0</strong>
+        </article>
+        <article class="kpi">
+          <span>Peserta</span>
+          <strong id="totalParticipants">0</strong>
+        </article>
+        <article class="kpi">
+          <span>Peserta Aktif</span>
+          <strong id="activeParticipants">0</strong>
+        </article>
+        <article class="kpi accent">
+          <span>Rata-rata Setoran</span>
+          <strong id="averageFunds">Rp0</strong>
+        </article>
+      </section>
+
+      <section class="panel chart-panel" aria-label="Rekap bulanan">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Rekap Bulanan</p>
+            <h2>Setoran per Bulan</h2>
+          </div>
+          <strong id="bestMonth">-</strong>
+        </div>
+        <div class="bar-chart" id="barChart"></div>
+      </section>
+
+      <section class="toolbar" aria-label="Kontrol tabel peserta">
+        <label class="search-box">
+          <span>Cari</span>
+          <input id="searchInput" type="search" placeholder="Nama peserta" />
+        </label>
+        <label class="select-box">
+          <span>Status</span>
+          <select id="statusFilter">
+            <option value="all">Semua</option>
+            <option value="AKTIF">Aktif</option>
+            <option value="BELUM SETOR">Belum setor</option>
+          </select>
+        </label>
+      </section>
+
+      <section class="panel table-panel" aria-label="Detail peserta">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Detail Peserta</p>
+            <h2>Setoran dan Status</h2>
+          </div>
+          <span id="rowCount">0 data</span>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Nama</th>
+                <th>Total</th>
+                <th>Status</th>
+                <th>Progress Bulanan</th>
+              </tr>
+            </thead>
+            <tbody id="participantRows"></tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+
+    <script src="config.js?v=3"></script>
+    <script src="data.js?v=3"></script>
+    <script src="script.js?v=3"></script>
+  </body>
+</html>
