@@ -145,6 +145,87 @@ label span {
   color: #d5eee8;
 }
 
+.payment-kpi {
+  gap: 14px;
+}
+
+.qris-button {
+  min-height: 46px;
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  border-radius: 6px;
+  padding: 0 14px;
+  background: #fff;
+  color: #163a35;
+  font: inherit;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.qris-button:hover {
+  background: #d5eee8;
+}
+
+.qris-dialog {
+  width: min(440px, calc(100% - 24px));
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 20px;
+  background: var(--panel);
+  color: var(--ink);
+  box-shadow: 0 24px 80px rgba(32, 33, 36, 0.3);
+}
+
+.qris-dialog::backdrop {
+  background: rgba(20, 30, 27, 0.72);
+}
+
+.qris-dialog__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.dialog-close {
+  display: grid;
+  width: 40px;
+  height: 40px;
+  flex: 0 0 40px;
+  place-items: center;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: #fff;
+  color: var(--ink);
+  font-size: 1.6rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.qris-frame {
+  display: grid;
+  min-height: 280px;
+  place-items: center;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 14px;
+  background: #fff;
+}
+
+.qris-frame img {
+  display: block;
+  width: 100%;
+  max-width: 340px;
+  height: auto;
+  object-fit: contain;
+}
+
+.qris-fallback {
+  color: var(--rose);
+  font-weight: 800;
+  text-align: center;
+}
+
 .panel {
   padding: 20px;
 }
@@ -369,6 +450,20 @@ th {
   .kpi strong {
     font-size: 1.35rem;
     overflow-wrap: anywhere;
+  }
+
+  .qris-button {
+    min-height: 42px;
+    padding: 0 10px;
+    font-size: 0.84rem;
+  }
+
+  .qris-dialog {
+    padding: 16px;
+  }
+
+  .qris-frame {
+    min-height: 240px;
   }
 
   .panel {

@@ -18,13 +18,17 @@ const elements = {
   totalFunds: document.querySelector("#totalFunds"),
   totalParticipants: document.querySelector("#totalParticipants"),
   activeParticipants: document.querySelector("#activeParticipants"),
-  averageFunds: document.querySelector("#averageFunds"),
   bestMonth: document.querySelector("#bestMonth"),
   barChart: document.querySelector("#barChart"),
   participantRows: document.querySelector("#participantRows"),
   rowCount: document.querySelector("#rowCount"),
   searchInput: document.querySelector("#searchInput"),
   statusFilter: document.querySelector("#statusFilter"),
+  openQris: document.querySelector("#openQris"),
+  closeQris: document.querySelector("#closeQris"),
+  qrisDialog: document.querySelector("#qrisDialog"),
+  qrisImage: document.querySelector("#qrisImage"),
+  qrisFallback: document.querySelector("#qrisFallback"),
 };
 
 function setSyncStatus(message, mode) {
@@ -270,7 +274,6 @@ async function loadOnlineData() {
 
 function renderSummary(data) {
   const { summary } = data;
-  const average = summary.totalParticipants ? summary.totalFunds / summary.totalParticipants : 0;
   const monthlyEntries = Object.entries(summary.monthlyTotals);
   const [bestMonth, bestValue] = monthlyEntries.reduce(
     (best, current) => (current[1] > best[1] ? current : best),
@@ -281,8 +284,22 @@ function renderSummary(data) {
   elements.totalFunds.textContent = formatCurrency(summary.totalFunds);
   elements.totalParticipants.textContent = summary.totalParticipants;
   elements.activeParticipants.textContent = summary.activeParticipants;
-  elements.averageFunds.textContent = formatCurrency(average);
   elements.bestMonth.textContent = bestValue ? `${bestMonth}: ${formatCurrency(bestValue)}` : "Belum ada setoran";
+}
+
+function setupQrisDialog() {
+  const showFallback = () => {
+    elements.qrisImage.hidden = true;
+    elements.qrisFallback.hidden = false;
+  };
+
+  elements.openQris.addEventListener("click", () => elements.qrisDialog.showModal());
+  elements.closeQris.addEventListener("click", () => elements.qrisDialog.close());
+  elements.qrisDialog.addEventListener("click", (event) => {
+    if (event.target === elements.qrisDialog) elements.qrisDialog.close();
+  });
+  elements.qrisImage.addEventListener("error", showFallback);
+  if (elements.qrisImage.complete && elements.qrisImage.naturalWidth === 0) showFallback();
 }
 
 function renderChart(data) {
@@ -338,6 +355,8 @@ function renderRows() {
 }
 
 async function init() {
+  setupQrisDialog();
+
   try {
     appData = await loadOnlineData();
     if (appData) {

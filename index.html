@@ -30,9 +30,9 @@
           <span>Peserta Aktif</span>
           <strong id="activeParticipants">0</strong>
         </article>
-        <article class="kpi accent">
-          <span>Rata-rata Setoran</span>
-          <strong id="averageFunds">Rp0</strong>
+        <article class="kpi accent payment-kpi">
+          <span>Pembayaran Qurban</span>
+          <button class="qris-button" id="openQris" type="button">Tampilkan QRIS</button>
         </article>
       </section>
 
@@ -88,8 +88,22 @@
       </section>
     </main>
 
-    <script src="config.js?v=4"></script>
-    <script src="data.js?v=4"></script>
-    <script src="script.js?v=4"></script>
+    <dialog class="qris-dialog" id="qrisDialog" aria-labelledby="qrisTitle">
+      <div class="qris-dialog__header">
+        <div>
+          <p class="eyebrow">Pembayaran</p>
+          <h2 id="qrisTitle">QRIS Tabungan Qurban</h2>
+        </div>
+        <button class="dialog-close" id="closeQris" type="button" aria-label="Tutup QRIS" title="Tutup">×</button>
+      </div>
+      <div class="qris-frame">
+        <img id="qrisImage" src="qris.png" alt="Kode QRIS untuk pembayaran tabungan qurban" />
+        <p class="qris-fallback" id="qrisFallback" hidden>Gambar QRIS belum tersedia.</p>
+      </div>
+    </dialog>
+
+    <script src="config.js?v=5"></script>
+    <script src="data.js?v=5"></script>
+    <script src="script.js?v=5"></script>
   </body>
 </html>
