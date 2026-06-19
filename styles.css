@@ -244,6 +244,36 @@ select {
   overflow-x: auto;
 }
 
+.table-panel .section-heading {
+  position: relative;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding-bottom: 18px;
+  text-align: center;
+}
+
+.table-panel .section-heading::after {
+  content: "";
+  width: 64px;
+  height: 3px;
+  border-radius: 3px;
+  background: var(--green);
+}
+
+.table-panel #rowCount {
+  display: inline-flex;
+  align-items: center;
+  min-height: 30px;
+  border: 1px solid rgba(29, 127, 99, 0.25);
+  border-radius: 999px;
+  padding: 4px 11px;
+  background: rgba(29, 127, 99, 0.08);
+  color: var(--green);
+  font-size: 0.75rem;
+  font-weight: 900;
+}
+
 table {
   width: 100%;
   border-collapse: collapse;
@@ -261,7 +291,12 @@ td {
 th {
   color: var(--muted);
   font-size: 0.78rem;
+  text-align: center;
   text-transform: uppercase;
+}
+
+tbody td:nth-child(-n + 3) {
+  text-align: center;
 }
 
 .amount {
@@ -444,6 +479,11 @@ th {
     gap: 5px;
     padding: 0;
     border: 0;
+    text-align: left;
+  }
+
+  tbody td:nth-child(-n + 3) {
+    text-align: left;
   }
 
   tbody td::before {
