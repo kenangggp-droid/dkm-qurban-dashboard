@@ -29,7 +29,7 @@ Lalu buka:
 ```text
 Framework preset: None
 Build command: kosong
-Build output directory: /
+Build output directory: .
 ```
 
 6. Klik `Save and Deploy`.
