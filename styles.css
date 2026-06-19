@@ -375,21 +375,43 @@ th {
   color: var(--rose);
 }
 
-.mini-months {
+.monthly-recap {
   display: grid;
-  grid-template-columns: repeat(12, minmax(18px, 1fr));
-  gap: 4px;
-  max-width: 420px;
+  grid-template-columns: repeat(4, minmax(94px, 1fr));
+  gap: 6px;
+  min-width: 430px;
 }
 
-.mini-month {
-  height: 20px;
-  border-radius: 3px;
-  background: #e5dece;
+.monthly-payment {
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+  border-left: 3px solid #d8d2c3;
+  padding: 6px 8px;
+  background: #f7f5ef;
 }
 
-.mini-month.paid {
-  background: var(--green);
+.monthly-payment.paid {
+  border-left-color: var(--green);
+  background: rgba(29, 127, 99, 0.08);
+}
+
+.monthly-payment span {
+  color: var(--muted);
+  font-size: 0.68rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.monthly-payment strong {
+  overflow-wrap: anywhere;
+  font-size: 0.75rem;
+  line-height: 1.2;
+}
+
+.monthly-payment.empty strong {
+  color: var(--muted);
+  font-weight: 700;
 }
 
 @media (max-width: 860px) {
@@ -562,13 +584,17 @@ th {
     grid-column: 1 / -1;
   }
 
-  .mini-months {
-    grid-template-columns: repeat(12, minmax(10px, 1fr));
-    max-width: none;
+  .monthly-recap {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    min-width: 0;
   }
 
-  .mini-month {
-    height: 16px;
+  .monthly-payment {
+    padding: 7px;
+  }
+
+  .monthly-payment strong {
+    font-size: 0.73rem;
   }
 }
 

@@ -334,11 +334,15 @@ function renderRows() {
   elements.rowCount.textContent = `${rows.length} data`;
   elements.participantRows.innerHTML = rows
     .map((participant) => {
-      const months = appData.months
+      const monthlyRecap = appData.months
         .map((month) => {
-          const paid = participant.monthly[month] > 0;
-          const title = `${month}: ${formatCurrency(participant.monthly[month])}`;
-          return `<span class="mini-month ${paid ? "paid" : ""}" title="${title}"></span>`;
+          const value = participant.monthly[month];
+          return `
+            <div class="monthly-payment ${value > 0 ? "paid" : "empty"}">
+              <span>${month}</span>
+              <strong>${formatCurrency(value)}</strong>
+            </div>
+          `;
         })
         .join("");
 
@@ -347,7 +351,7 @@ function renderRows() {
           <td data-label="Nama"><strong>${participant.name}</strong></td>
           <td data-label="Total" class="amount">${formatCurrency(participant.total)}</td>
           <td data-label="Status"><span class="status ${participant.status === "AKTIF" ? "" : "empty"}">${participant.status}</span></td>
-          <td data-label="Progress"><div class="mini-months" aria-label="Progress setoran bulanan">${months}</div></td>
+          <td data-label="Rekap Bulanan"><div class="monthly-recap" aria-label="Rekap transfer setiap bulan">${monthlyRecap}</div></td>
         </tr>
       `;
     })
