@@ -327,10 +327,10 @@ function renderRows() {
 
       return `
         <tr>
-          <td><strong>${participant.name}</strong></td>
-          <td class="amount">${formatCurrency(participant.total)}</td>
-          <td><span class="status ${participant.status === "AKTIF" ? "" : "empty"}">${participant.status}</span></td>
-          <td><div class="mini-months" aria-label="Progress setoran bulanan">${months}</div></td>
+          <td data-label="Nama"><strong>${participant.name}</strong></td>
+          <td data-label="Total" class="amount">${formatCurrency(participant.total)}</td>
+          <td data-label="Status"><span class="status ${participant.status === "AKTIF" ? "" : "empty"}">${participant.status}</span></td>
+          <td data-label="Progress"><div class="mini-months" aria-label="Progress setoran bulanan">${months}</div></td>
         </tr>
       `;
     })
