@@ -8,8 +8,6 @@ let appData = null;
 const months = ["Jun", "Jul", "Agu", "Sep", "Okt", "Nov", "Des", "Jan", "Feb", "Mar", "Apr", "Mei"];
 
 const elements = {
-  sourceName: document.querySelector("#sourceName"),
-  syncStatus: document.querySelector("#syncStatus"),
   totalFunds: document.querySelector("#totalFunds"),
   totalParticipants: document.querySelector("#totalParticipants"),
   activeParticipants: document.querySelector("#activeParticipants"),
@@ -23,11 +21,6 @@ const elements = {
   qrisImage: document.querySelector("#qrisImage"),
   qrisFallback: document.querySelector("#qrisFallback"),
 };
-
-function setSyncStatus(message, mode) {
-  elements.syncStatus.textContent = message;
-  elements.syncStatus.className = `sync-status ${mode || ""}`.trim();
-}
 
 function formatCurrency(value) {
   return currency.format(value).replace(/\s/g, "");
@@ -268,7 +261,6 @@ async function loadOnlineData() {
 function renderSummary(data) {
   const { summary } = data;
 
-  elements.sourceName.textContent = data.source;
   elements.totalFunds.textContent = formatCurrency(summary.totalFunds);
   elements.totalParticipants.textContent = summary.totalParticipants;
   elements.activeParticipants.textContent = summary.activeParticipants;
@@ -331,21 +323,15 @@ async function init() {
 
   try {
     appData = await loadOnlineData();
-    if (appData) {
-      setSyncStatus("Tersinkron dari spreadsheet online. Refresh halaman setelah mengedit data.", "online");
-    }
   } catch (error) {
     console.warn(error);
-    setSyncStatus(`Data online belum bisa dibaca: ${error.message}. Memakai data lokal dari Excel terakhir.`, "fallback");
   }
 
   if (!appData && window.QURBAN_DATA) {
     appData = window.QURBAN_DATA;
-    setSyncStatus("Memakai data lokal dari Excel terakhir. Isi URL CSV di config.js untuk sinkron online.", "fallback");
   } else if (!appData) {
     const response = await fetch("data.json");
     appData = await response.json();
-    setSyncStatus("Memakai data lokal dari data.json.", "fallback");
   }
 
   renderSummary(appData);

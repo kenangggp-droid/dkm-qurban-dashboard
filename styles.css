@@ -64,35 +64,6 @@ h2 {
   text-transform: uppercase;
 }
 
-.source-pill {
-  flex: 0 0 auto;
-  max-width: 280px;
-  padding: 10px 14px;
-  border: 1px solid var(--line);
-  border-radius: 999px;
-  color: var(--muted);
-  background: rgba(255, 255, 255, 0.7);
-  font-size: 0.85rem;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.sync-status {
-  margin-top: 12px;
-  color: var(--muted);
-  font-size: 0.94rem;
-  font-weight: 700;
-}
-
-.sync-status.online {
-  color: var(--green);
-}
-
-.sync-status.fallback {
-  color: var(--gold);
-}
-
 main {
   display: grid;
   gap: 18px;
@@ -379,15 +350,6 @@ th {
   h1 {
     font-size: 2.15rem;
     line-height: 1.02;
-  }
-
-  .sync-status {
-    font-size: 0.82rem;
-    line-height: 1.45;
-  }
-
-  .source-pill {
-    max-width: 100%;
   }
 
   main {
