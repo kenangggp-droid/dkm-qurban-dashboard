@@ -5,7 +5,7 @@ const currency = new Intl.NumberFormat("id-ID", {
 });
 
 let appData = null;
-const months = ["Jan", "Feb", "Mar", "Apr", "Mei", "Jun", "Jul", "Agu", "Sep", "Okt", "Nov", "Des"];
+const months = ["Jun", "Jul", "Agu", "Sep", "Okt", "Nov", "Des", "Jan", "Feb", "Mar", "Apr", "Mei"];
 
 const elements = {
   sourceName: document.querySelector("#sourceName"),
@@ -349,6 +349,7 @@ async function init() {
   }
 
   renderSummary(appData);
+  appData.months = months;
   renderRows();
 
   elements.searchInput.addEventListener("input", renderRows);
