@@ -4,11 +4,6 @@ const currency = new Intl.NumberFormat("id-ID", {
   maximumFractionDigits: 0,
 });
 
-const compactCurrency = new Intl.NumberFormat("id-ID", {
-  notation: "compact",
-  maximumFractionDigits: 1,
-});
-
 let appData = null;
 const months = ["Jan", "Feb", "Mar", "Apr", "Mei", "Jun", "Jul", "Agu", "Sep", "Okt", "Nov", "Des"];
 
@@ -18,8 +13,6 @@ const elements = {
   totalFunds: document.querySelector("#totalFunds"),
   totalParticipants: document.querySelector("#totalParticipants"),
   activeParticipants: document.querySelector("#activeParticipants"),
-  bestMonth: document.querySelector("#bestMonth"),
-  barChart: document.querySelector("#barChart"),
   participantRows: document.querySelector("#participantRows"),
   rowCount: document.querySelector("#rowCount"),
   searchInput: document.querySelector("#searchInput"),
@@ -274,17 +267,11 @@ async function loadOnlineData() {
 
 function renderSummary(data) {
   const { summary } = data;
-  const monthlyEntries = Object.entries(summary.monthlyTotals);
-  const [bestMonth, bestValue] = monthlyEntries.reduce(
-    (best, current) => (current[1] > best[1] ? current : best),
-    ["-", 0],
-  );
 
   elements.sourceName.textContent = data.source;
   elements.totalFunds.textContent = formatCurrency(summary.totalFunds);
   elements.totalParticipants.textContent = summary.totalParticipants;
   elements.activeParticipants.textContent = summary.activeParticipants;
-  elements.bestMonth.textContent = bestValue ? `${bestMonth}: ${formatCurrency(bestValue)}` : "Belum ada setoran";
 }
 
 function setupQrisDialog() {
@@ -300,25 +287,6 @@ function setupQrisDialog() {
   });
   elements.qrisImage.addEventListener("error", showFallback);
   if (elements.qrisImage.complete && elements.qrisImage.naturalWidth === 0) showFallback();
-}
-
-function renderChart(data) {
-  const totals = data.months.map((month) => data.summary.monthlyTotals[month] || 0);
-  const max = Math.max(...totals, 1);
-
-  elements.barChart.innerHTML = data.months
-    .map((month) => {
-      const value = data.summary.monthlyTotals[month] || 0;
-      const height = Math.max((value / max) * 210, value ? 16 : 8);
-      return `
-        <div class="bar-item">
-          <div class="bar-value">${value ? `Rp${compactCurrency.format(value)}` : "0"}</div>
-          <div class="bar ${value ? "" : "zero"}" style="--height: ${height}px"></div>
-          <div class="bar-label">${month}</div>
-        </div>
-      `;
-    })
-    .join("");
 }
 
 function renderRows() {
@@ -381,7 +349,6 @@ async function init() {
   }
 
   renderSummary(appData);
-  renderChart(appData);
   renderRows();
 
   elements.searchInput.addEventListener("input", renderRows);

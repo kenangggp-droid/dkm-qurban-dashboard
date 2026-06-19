@@ -238,67 +238,6 @@ label span {
   margin-bottom: 18px;
 }
 
-#bestMonth {
-  color: var(--gold);
-  white-space: nowrap;
-}
-
-.bar-chart {
-  display: grid;
-  grid-template-columns: repeat(12, minmax(44px, 1fr));
-  align-items: end;
-  gap: 10px;
-  min-height: 250px;
-  padding-top: 12px;
-}
-
-.chart-scroll {
-  width: 100%;
-  min-width: 0;
-  max-width: 100%;
-  overflow-x: auto;
-  overscroll-behavior-inline: contain;
-}
-
-.chart-panel {
-  min-width: 0;
-  overflow: hidden;
-}
-
-.bar-item {
-  display: grid;
-  gap: 8px;
-  align-items: end;
-  min-width: 0;
-}
-
-.bar {
-  height: var(--height);
-  min-height: 10px;
-  border-radius: 6px 6px 0 0;
-  background: linear-gradient(180deg, var(--teal), var(--green));
-}
-
-.bar.zero {
-  background: #d7d1bf;
-}
-
-.bar-label {
-  color: var(--muted);
-  font-size: 0.78rem;
-  font-weight: 800;
-  text-align: center;
-}
-
-.bar-value {
-  min-height: 32px;
-  color: var(--ink);
-  font-size: 0.72rem;
-  font-weight: 800;
-  line-height: 1.15;
-  text-align: center;
-}
-
 .toolbar {
   display: flex;
   gap: 12px;
@@ -424,9 +363,6 @@ th {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .bar-chart {
-    grid-template-columns: repeat(6, minmax(40px, 1fr));
-  }
 }
 
 @media (max-width: 560px) {
@@ -495,29 +431,6 @@ th {
   .section-heading {
     align-items: flex-start;
     margin-bottom: 14px;
-  }
-
-  #bestMonth {
-    max-width: 48%;
-    font-size: 0.82rem;
-    text-align: right;
-    white-space: normal;
-  }
-
-  .bar-chart {
-    grid-template-columns: repeat(12, 48px);
-    gap: 8px;
-    width: max-content;
-    min-width: 100%;
-    min-height: 220px;
-  }
-
-  .bar-value {
-    font-size: 0.68rem;
-  }
-
-  .bar-label {
-    font-size: 0.72rem;
   }
 
   .toolbar {
